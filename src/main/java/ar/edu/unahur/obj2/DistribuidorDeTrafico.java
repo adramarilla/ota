@@ -1,24 +1,23 @@
 package ar.edu.unahur.obj2;
 
+import java.util.List;
 import java.util.Random;
 
 public class DistribuidorDeTrafico {
 
     private Random random = new Random();
+    private List<Proveedor> proveedores; //Cambio el switch que estaba originalmente por una lista.
 
-    public String proveedor() {
-        switch (random.nextInt(9)) {
-            case 0:
-            case 1:
-            case 2: return "Amadeus";
-            case 3:
-            case 4:
-            case 5: return "Sabre";
-            case 6:
-            case 7:
-            case 8: return "Worldspan";
-            default: return "Amadeus";
-        }
-
+    public DistribuidorDeTrafico(List<Proveedor> proveedor) {
+        this.proveedores = proveedor;
     }
+
+    public void addProveedor(Proveedor proveedor) {
+        proveedores.add(proveedor);
+    }
+
+    public Proveedor proveedor() {
+        return proveedores.get(random.nextInt(proveedores.size()));
+    }
+
 }
